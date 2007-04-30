@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <dirent.h>
 #include <errno.h>
+#include <sys/types.h>
 #include <sys/statfs.h>
 #include <sys/stat.h>
 #include <readline/readline.h>
@@ -972,6 +973,10 @@ get_file (struct object *item)
     gchar *local_path;
     gchar **fields;
     gchar *localpath;
+    gchar *orig_field;
+    int i;
+    struct stat dstat;
+ 
     fields = g_strsplit (item->path, "/", -1);
     fields[0] = g_strdup (find_base (item->path));
     if (fields[0] == NULL) {
@@ -979,6 +984,28 @@ get_file (struct object *item)
         return;
     }
 
+    // make items parent dir with parents
+    i = 1; 
+    while (fields[i] != NULL){
+      // save field
+      orig_field = fields[i];
+      fields[i] = NULL;
+      localpath = g_strjoinv ("/", fields);
+      // mkdir if file doesnt exist
+      if (stat(localpath, &dstat)) {
+	if (mkdir(localpath,  S_IRUSR | S_IWUSR | S_IXUSR | 
+		  S_IRGRP | S_IXGRP | 
+		  S_IROTH | S_IXOTH) == -1) {
+	  display_message(strerror(errno));
+	  fields[i] = orig_field;
+	  break;
+	} 
+      }
+      //	restore field;
+      fields[i] = orig_field;
+      i++;
+    }
+    
     localpath = g_strjoinv ("/", fields);
 
     int ret;
@@ -1209,6 +1236,11 @@ save_playlist (const gchar *path)
     return ret;
 }
 
+int progressfunc(uint64_t const sent, uint64_t const total,
+		 void const * const data) {
+  //  g_debug("sent %d of %d\n", sent, total);
+}
+
 /* Refresh list of updates */
 int
 refresh_list ()
@@ -1239,27 +1271,33 @@ refresh_list ()
     /* Scan for Music */
     LIBMTP_folder_t *folder;
     folder = LIBMTP_Find_Folder (folders, device->default_music_folder);
-    scan_tree ("", folder->name, musicpath);
+    if (folder)
+      scan_tree ("", folder->name, musicpath);
     if (progressbar != NULL) gtk_progress_bar_set_fraction(progressbar,0.20);
     /* Scan for Playlists */
     folder = LIBMTP_Find_Folder (folders, device->default_playlist_folder);
-    scan_tree ("", folder->name, playpath);
+    if (folder)
+      scan_tree ("", folder->name, playpath);
     if (progressbar != NULL) gtk_progress_bar_set_fraction(progressbar,0.25);
     /* Scan for Pictures */
     folder = LIBMTP_Find_Folder (folders, device->default_picture_folder);
-    scan_tree ("", folder->name, picturepath);
+    if (folder)
+      scan_tree ("", folder->name, picturepath);
     if (progressbar != NULL) gtk_progress_bar_set_fraction(progressbar,0.30);
     /* Scan for Videos */
     folder = LIBMTP_Find_Folder (folders, device->default_video_folder);
-    scan_tree ("", folder->name, videopath);
+    if (folder)
+      scan_tree ("", folder->name, videopath);
     if (progressbar != NULL) gtk_progress_bar_set_fraction(progressbar,0.35);
     /* Scan for Organizer items */
     folder = LIBMTP_Find_Folder (folders, device->default_organizer_folder);
-    scan_tree ("", folder->name, organizerpath);
+    if (folder)
+      scan_tree ("", folder->name, organizerpath);
     if (progressbar != NULL) gtk_progress_bar_set_fraction(progressbar,0.40);
     /* Scan for Zencast */
     folder = LIBMTP_Find_Folder (folders, device->default_zencast_folder);
-    scan_tree ("", folder->name, zencastpath);
+    if (folder)
+      scan_tree ("", folder->name, zencastpath);
     if (progressbar != NULL) gtk_progress_bar_set_fraction(progressbar,0.45);
 
     /* Scan device */
