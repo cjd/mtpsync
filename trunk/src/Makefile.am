@@ -8,7 +8,7 @@ INCLUDES = \
 bin_PROGRAMS = mtpsync
 
 mtpsync_SOURCES = \
-	main.c \
+	main.c main.h \
 	id3read.c id3read.h \
 	support.c support.h \
 	interface.c interface.h \
