@@ -258,7 +258,6 @@ scan (void const *ptr, ssize_t len)
 
     if (!is_vbr) {
         double time = (len * 8.0) / (header.bitrate);   /* time in seconds */
-        double timefrac = (double) time - ((long) (time));
         long nsamples = 32 * MAD_NSBSAMPLES (&header);  /* samples per frame */
 
         /* samplerate is a constant */
