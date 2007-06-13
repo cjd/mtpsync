@@ -5715,18 +5715,18 @@ fi
 done
 
 
-if test "${ac_cv_header_readline_h+set}" = set; then
-  { echo "$as_me:$LINENO: checking for readline.h" >&5
-echo $ECHO_N "checking for readline.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_readline_h+set}" = set; then
+if test "${ac_cv_header_readline_readline_h+set}" = set; then
+  { echo "$as_me:$LINENO: checking for readline/readline.h" >&5
+echo $ECHO_N "checking for readline/readline.h... $ECHO_C" >&6; }
+if test "${ac_cv_header_readline_readline_h+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_readline_h" >&5
-echo "${ECHO_T}$ac_cv_header_readline_h" >&6; }
+{ echo "$as_me:$LINENO: result: $ac_cv_header_readline_readline_h" >&5
+echo "${ECHO_T}$ac_cv_header_readline_readline_h" >&6; }
 else
   # Is the header compilable?
-{ echo "$as_me:$LINENO: checking readline.h usability" >&5
-echo $ECHO_N "checking readline.h usability... $ECHO_C" >&6; }
+{ echo "$as_me:$LINENO: checking readline/readline.h usability" >&5
+echo $ECHO_N "checking readline/readline.h usability... $ECHO_C" >&6; }
 cat >conftest.$ac_ext <<_ACEOF
 /* confdefs.h.  */
 _ACEOF
@@ -5734,7 +5734,7 @@ cat confdefs.h >>conftest.$ac_ext
 cat >>conftest.$ac_ext <<_ACEOF
 /* end confdefs.h.  */
 $ac_includes_default
-#include <readline.h>
+#include <readline/readline.h>
 _ACEOF
 rm -f conftest.$ac_objext
 if { (ac_try="$ac_compile"
@@ -5766,15 +5766,15 @@ rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
 echo "${ECHO_T}$ac_header_compiler" >&6; }
 
 # Is the header present?
-{ echo "$as_me:$LINENO: checking readline.h presence" >&5
-echo $ECHO_N "checking readline.h presence... $ECHO_C" >&6; }
+{ echo "$as_me:$LINENO: checking readline/readline.h presence" >&5
+echo $ECHO_N "checking readline/readline.h presence... $ECHO_C" >&6; }
 cat >conftest.$ac_ext <<_ACEOF
 /* confdefs.h.  */
 _ACEOF
 cat confdefs.h >>conftest.$ac_ext
 cat >>conftest.$ac_ext <<_ACEOF
 /* end confdefs.h.  */
-#include <readline.h>
+#include <readline/readline.h>
 _ACEOF
 if { (ac_try="$ac_cpp conftest.$ac_ext"
 case "(($ac_try" in
@@ -5807,40 +5807,40 @@ echo "${ECHO_T}$ac_header_preproc" >&6; }
 # So?  What about this header?
 case $ac_header_compiler:$ac_header_preproc:$ac_c_preproc_warn_flag in
   yes:no: )
-    { echo "$as_me:$LINENO: WARNING: readline.h: accepted by the compiler, rejected by the preprocessor!" >&5
-echo "$as_me: WARNING: readline.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
-    { echo "$as_me:$LINENO: WARNING: readline.h: proceeding with the compiler's result" >&5
-echo "$as_me: WARNING: readline.h: proceeding with the compiler's result" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: readline/readline.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h: proceeding with the compiler's result" >&5
+echo "$as_me: WARNING: readline/readline.h: proceeding with the compiler's result" >&2;}
     ac_header_preproc=yes
     ;;
   no:yes:* )
-    { echo "$as_me:$LINENO: WARNING: readline.h: present but cannot be compiled" >&5
-echo "$as_me: WARNING: readline.h: present but cannot be compiled" >&2;}
-    { echo "$as_me:$LINENO: WARNING: readline.h:     check for missing prerequisite headers?" >&5
-echo "$as_me: WARNING: readline.h:     check for missing prerequisite headers?" >&2;}
-    { echo "$as_me:$LINENO: WARNING: readline.h: see the Autoconf documentation" >&5
-echo "$as_me: WARNING: readline.h: see the Autoconf documentation" >&2;}
-    { echo "$as_me:$LINENO: WARNING: readline.h:     section \"Present But Cannot Be Compiled\"" >&5
-echo "$as_me: WARNING: readline.h:     section \"Present But Cannot Be Compiled\"" >&2;}
-    { echo "$as_me:$LINENO: WARNING: readline.h: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: readline.h: proceeding with the preprocessor's result" >&2;}
-    { echo "$as_me:$LINENO: WARNING: readline.h: in the future, the compiler will take precedence" >&5
-echo "$as_me: WARNING: readline.h: in the future, the compiler will take precedence" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h: present but cannot be compiled" >&5
+echo "$as_me: WARNING: readline/readline.h: present but cannot be compiled" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h:     check for missing prerequisite headers?" >&5
+echo "$as_me: WARNING: readline/readline.h:     check for missing prerequisite headers?" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h: see the Autoconf documentation" >&5
+echo "$as_me: WARNING: readline/readline.h: see the Autoconf documentation" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h:     section \"Present But Cannot Be Compiled\"" >&5
+echo "$as_me: WARNING: readline/readline.h:     section \"Present But Cannot Be Compiled\"" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h: proceeding with the preprocessor's result" >&5
+echo "$as_me: WARNING: readline/readline.h: proceeding with the preprocessor's result" >&2;}
+    { echo "$as_me:$LINENO: WARNING: readline/readline.h: in the future, the compiler will take precedence" >&5
+echo "$as_me: WARNING: readline/readline.h: in the future, the compiler will take precedence" >&2;}
 
     ;;
 esac
-{ echo "$as_me:$LINENO: checking for readline.h" >&5
-echo $ECHO_N "checking for readline.h... $ECHO_C" >&6; }
-if test "${ac_cv_header_readline_h+set}" = set; then
+{ echo "$as_me:$LINENO: checking for readline/readline.h" >&5
+echo $ECHO_N "checking for readline/readline.h... $ECHO_C" >&6; }
+if test "${ac_cv_header_readline_readline_h+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  ac_cv_header_readline_h=$ac_header_preproc
+  ac_cv_header_readline_readline_h=$ac_header_preproc
 fi
-{ echo "$as_me:$LINENO: result: $ac_cv_header_readline_h" >&5
-echo "${ECHO_T}$ac_cv_header_readline_h" >&6; }
+{ echo "$as_me:$LINENO: result: $ac_cv_header_readline_readline_h" >&5
+echo "${ECHO_T}$ac_cv_header_readline_readline_h" >&6; }
 
 fi
-if test $ac_cv_header_readline_h = yes; then
+if test $ac_cv_header_readline_readline_h = yes; then
   cat >>confdefs.h <<\_ACEOF
 #define HAVE_READLINE 1
 _ACEOF
@@ -6041,6 +6041,16 @@ fi
 { echo "$as_me:$LINENO: result: $ac_cv_header_ncurses_h" >&5
 echo "${ECHO_T}$ac_cv_header_ncurses_h" >&6; }
 
+fi
+if test $ac_cv_header_ncurses_h = yes; then
+  cat >>confdefs.h <<\_ACEOF
+#define HAVE_READLINE 1
+_ACEOF
+
+else
+  { { echo "$as_me:$LINENO: error: Sorry, ncurses not found" >&5
+echo "$as_me: error: Sorry, ncurses not found" >&2;}
+   { (exit 1); exit 1; }; }
 fi
 
 
