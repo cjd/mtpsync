@@ -10,7 +10,7 @@ AC_PROG_CC
 AM_PROG_CC_STDC
 AC_HEADER_STDC
 AC_CHECK_LIB([readline], [main])
-AC_CHECK_HEADER([readline.h], [AC_DEFINE([HAVE_READLINE])], [AC_MSG_ERROR([Sorry, readline not found])])
+AC_CHECK_HEADER([readline/readline.h], [AC_DEFINE([HAVE_READLINE])], [AC_MSG_ERROR([Sorry, readline not found])])
 AC_CHECK_LIB([ncurses], [main])
 AC_CHECK_HEADER([ncurses.h], [AC_DEFINE([HAVE_READLINE])], [AC_MSG_ERROR([Sorry, ncurses not found])])
 
