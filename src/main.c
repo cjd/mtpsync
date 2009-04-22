@@ -867,7 +867,7 @@ send_file (struct object *item)
                               directory, parent_id);
                     my_id =
                       LIBMTP_Create_Folder (device, fields[i],
-                                            (uint32_t) parent_id);
+                                            (uint32_t) parent_id,0);
                     folders_changed = TRUE;
                 }
                 parent_id = (uint32_t) my_id;
@@ -937,7 +937,7 @@ send_file (struct object *item)
             //g_debug("%d:%d:%d",fd,genfile->duration,genfile->filesize);
             ret =
               LIBMTP_Send_Track_From_File_Descriptor (device, fd, genfile,
-                                                      NULL, NULL, parent_id);
+                                                      NULL, NULL);
             id3_file_close (id3_fh);
             close (fd);
             LIBMTP_destroy_track_t (genfile);
@@ -953,7 +953,7 @@ send_file (struct object *item)
             //g_debug("Send %s parent %d",localpath,parent_id);
             ret =
               LIBMTP_Send_File_From_File_Descriptor (device, fd, genfile,
-                                                     NULL, NULL, parent_id);
+                                                     NULL, NULL);
             LIBMTP_destroy_file_t (genfile);
         }
         if (ret != 0)
@@ -1229,7 +1229,7 @@ save_playlist (const gchar *path)
         ret = 0;
     } else {
         //g_debug("New playlist");
-        ret = LIBMTP_Create_New_Playlist (device, playlist, 0);
+        ret = LIBMTP_Create_New_Playlist (device, playlist);
         ret = 0;
     }
     return ret;
